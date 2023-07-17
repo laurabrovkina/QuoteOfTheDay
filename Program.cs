@@ -11,6 +11,7 @@ builder.Services.AddDbContextPool<QuoteOfTheDayDbContext>(o => o.UseSqlServer("S
 builder.Services.AddScoped<QuoteRepository>();
 
 builder.Services.AddScoped<QuoteOfTheDaySchema>()
+                .AddScoped<QuoteMutation>()
                 .AddScoped<QuoteQuery>()
                 .AddGraphQL(options => options.EnableMetrics = false)
                 .AddSystemTextJson()

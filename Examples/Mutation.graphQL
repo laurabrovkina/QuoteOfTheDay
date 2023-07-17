@@ -1,0 +1,43 @@
+# Create a new quote
+mutation ($quote: quoteInput!) {
+  createQuote(quote: $quote) {
+    author
+    text
+    category {
+      name
+    }
+  }
+}
+
+# Query variables
+{
+  "quote":{
+    "author": "Walt Disney",
+    "text": "The way to get started is to quit talking and being doing",
+    "categoryId": 1
+  }
+}
+
+# Update an existing quote
+mutation($quote: quoteInput!, $quoteId: ID!){
+  updateQuote(quote: $quote, quoteId: $quoteId){
+    id
+    author
+    text
+    category{
+      id
+      name
+    }
+  }
+}
+
+# Query variables
+{
+  "quote":{
+    "author": "Mr. Walt Disney",
+    "text": "The way to get started is to quit talking and being doing",
+    "categoryId": 2
+  },
+  "quoteId": 4
+}
+
