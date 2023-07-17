@@ -7,6 +7,26 @@ public static class ModelBuilderExtensions
 {
     public static void Seed(this ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Category>().HasData(
+            new List<object>
+            {
+                    new
+                    {
+                        Id = 1,
+                        Name = "Inspirational"
+                    },
+                    new
+                    {
+                        Id = 2,
+                        Name = "Funny"
+                    },
+                        new
+                    {
+                        Id = 3,
+                        Name = "Dark"
+                    }
+            });
+
         modelBuilder.Entity<Quote>().HasData(
          new List<object>
          {
@@ -23,7 +43,7 @@ public static class ModelBuilderExtensions
                         Id = 2,
                         Author = "Groucho Marx",
                         Text = "No one is perfect - that’s why pencils have erasers.",
-                        CategoryId = 1
+                        CategoryId = 2
                     },
 
                     new
@@ -31,7 +51,7 @@ public static class ModelBuilderExtensions
                         Id = 3,
                         Author = "Wolfgang Riebe",
                         Text = "Before you criticize someone, you should walk a mile in their shoes.",
-                        CategoryId = 2
+                        CategoryId = 1
                     }
          });
     }

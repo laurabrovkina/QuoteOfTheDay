@@ -1,0 +1,27 @@
+# Write your query or mutation here
+{
+  cite1: quote(id: 1){
+	...quoteFields
+  }
+  
+  cite2: quote(id: 2){
+	...quoteFields
+  }
+}
+
+fragment quoteFields on QuoteType {
+    id
+    name: author
+    text
+}
+
+{
+  quotes {
+    author
+    text
+    category {
+      id
+      name
+    }
+  }
+}

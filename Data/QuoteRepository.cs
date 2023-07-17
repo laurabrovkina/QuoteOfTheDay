@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using QuoteOfTheDay.Entities;
 
 namespace QuoteOfTheDay.Data;
@@ -13,6 +14,8 @@ public class QuoteRepository
 
     public IEnumerable<Quote> GetAll()
     {
-        return _dbContext.Quotes;
+        return _dbContext.Quotes.Include(q => q.Category);
     }
+
+    public Quote GetById(int id) => _dbContext.Quotes.Include(q => q.Category).SingleOrDefault(q => q.Id == id);
 }
