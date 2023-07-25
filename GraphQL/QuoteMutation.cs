@@ -32,5 +32,14 @@ public class QuoteMutation : ObjectGraphType
 
                     return quoteRepository.UpdateQuote(quote);
                 });
+
+        Field<StringGraphType>("deleteQuote",
+            arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "quoteId" }),
+            resolve: context => 
+            {
+                var quoteId = context.GetArgument<int>("quoteId");
+                quoteRepository.DeleteQuote(quoteId);
+                return $"Quote with id {quoteId} deleted";
+            }); 
     }
 }

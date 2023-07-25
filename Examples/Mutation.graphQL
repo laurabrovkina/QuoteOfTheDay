@@ -32,6 +32,8 @@ mutation($quote: quoteInput!, $quoteId: ID!){
 }
 
 # Query variables
+# id of a quote that will be updated
+# including fields that we want to update
 {
   "quote":{
     "author": "Mr. Walt Disney",
@@ -41,3 +43,13 @@ mutation($quote: quoteInput!, $quoteId: ID!){
   "quoteId": 4
 }
 
+# Delete an existing quote
+mutation($quoteId: ID!){
+  deleteQuote(quoteId: $quoteId)
+}
+
+# Query variables
+# id of a quote that will be deleted
+{
+	"quoteId": 1
+}

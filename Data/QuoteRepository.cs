@@ -45,4 +45,11 @@ public class QuoteRepository
 
         return quote;
     }
+
+    public void DeleteQuote(int id)
+    {
+        var quote = GetById(id);
+        _dbContext.Remove(quote);
+        _dbContext.SaveChanges();
+    }
 }
